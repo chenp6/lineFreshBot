@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.buildship.ui.wizard.project.creation">
+		<item key="project_location" value="D:\linebot-Java\line-bot-sdk\sample-spring-boot-kitchensink\server\server\linebot_server"/>
+		<item key="use_default_location" value="true"/>
+	</section>
+	<section name="org.eclipse.buildship.ui.wizard.project.import">
+		<item key="project_location" value="D:\linebot-Java\line-bot-sdk\sample-spring-boot-kitchensink\server\server\linebot_server"/>
+		<item key="apply_working_sets" value="false"/>
+		<list key="working_sets">
+		</list>
+	</section>
+</section>

@@ -1,0 +1,115 @@
+<html>
+
+<!DOCTYPE html>
+
+<head>
+    <title>1922實名制(請選擇您的手機)</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> -->
+
+    <script>
+        window.onload = function() {
+            //p.s.  載入完成前顯示loading...
+            //p.s.  '.room_selector'在window完整載入前為display:none (style.css)
+            $('#button_container').show();
+        }
+    </script>
+
+    <style>
+        button {
+            width: 60vw;
+            height: 25vh;
+            font-size: 3vw;
+            margin: 2vh;
+        }
+        
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div id="button_container" style="width: 60vw;height: 100vh;display:none;">
+            <button onclick="sendSMS('android')">Android手機</button>
+
+            <button onclick="sendSMS('iOS_new')">iOS &gt; 7
+                手機</button>
+
+            <button onclick="sendSMS('iOS_old')">iOS &lt; 7
+                手機</button>
+        </div>
+    </div>
+
+    <script>
+        // alert(liff.isInClient()); //是否在LINE內部瀏覽器
+
+        function getArgs() {
+            let args = new Map();
+
+            let liffQuery = location.search.substring(1); //liff.state=%3FsmsNo%3D0000%2B0000%2B0000%2B001
+            let liffPos = liffQuery.indexOf("=");
+            let liffValue = liffQuery.substring(liffPos + 1);
+
+            let query = "";
+
+            //decodeURIComponent(liffValue) => ?smsNo=0000+0000+0000+001'
+            query = decodeURIComponent(liffValue).substring(1); //smsNo=0000+0000+0000+001'
+
+            let pairs = query.split("&");
+            for (let i = 0; i < pairs.length; i++) {
+                let pos = pairs[i].indexOf("=");
+                if (pos == -1) continue;
+                let argname = pairs[i].substring(0, pos);
+                let value = pairs[i].substring(pos + 1);
+                args.set(argname, decodeURIComponent(value));
+
+            }
+            return args;
+        }
+        let args = getArgs();
+        let smsNo = "";
+        if (args.get('smsNo') != undefined) {
+            smsNo = args.get('smsNo');
+        }
+
+
+
+        let splitor = '?';
+
+        let smsHref = 'sms:1922' + splitor + 'body=場所代碼：' + smsNo + '%0a本次實聯簡訊限防疫目的使用。'
+
+        function sendSMS(device) {
+            switch (device) {
+                case 'android':
+                    {
+                        splitor = '?';
+                        break;
+                    }
+                case 'iOS_new':
+                    {
+                        splitor = '&';
+                        break;
+                    }
+                case 'iOS_old':
+                    {
+                        splitor = ';';
+                        break;
+                    }
+            }
+
+            if (smsNo != "") {
+                smsHref = 'sms:1922' + splitor + 'body=場所代碼：' + smsNo + '%0a本次實聯簡訊限防疫目的使用。'
+                location.href = smsHref;
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+import com.corundumstudio.socketio.listener.*;
+
+import java.util.Map;
+
+import com.corundumstudio.socketio.*;
+
+public class linebotServer {
+	public static void main(String[] args) {
+        Configuration config = new Configuration();
+        config.setHostname("192.168.43.97");
+        config.setPort(4000);
+        SocketIOServer server = new SocketIOServer(config);
+        server.addConnectListener(new ConnectListener() {
+			@Override
+			public void onConnect(SocketIOClient client) {
+	            System.out.println("server: " + client.getRemoteAddress() + "客户端连接成功");				
+			}
+        }
+        );
+        
+        server.addDisconnectListener(new DisconnectListener() {       
+			@Override
+			public void onDisconnect(SocketIOClient client) {
+	            System.out.println("leave");
+			}
+        });
+        
+
+        
+
+        
+        server.start();
+        
+
+        try {
+        	System.out.println("start");
+			Thread.sleep(Integer.MAX_VALUE);//一直執行server Thread
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+        server.stop();
+	}
+}

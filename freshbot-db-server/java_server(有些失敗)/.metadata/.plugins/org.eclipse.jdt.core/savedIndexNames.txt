@@ -1,0 +1,17 @@
+INDEX VERSION 1.131+D:\linebot-Java\line-bot-sdk\sample-spring-boot-kitchensink\server\server\.metadata\.plugins\org.eclipse.jdt.core
+3938136253.index
+1205991983.index
+283535417.index
+2731947921.index
+99768528.index
+601821566.index
+189081020.index
+1225533596.index
+949882975.index
+3188759573.index
+692649908.index
+34972655.index
+3814281356.index
+3067022823.index
+2300277487.index
+2904416362.index
