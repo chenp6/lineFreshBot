@@ -5,7 +5,7 @@
   
     lineFreshBot\client-bot\sample-spring-boot-kitchensink\src\main\java\com\example\bot\spring\KitchenSinkController.java
     
-## store-bot店家端機器人(位有變動>>>目前與原範例相同)
+## store-bot店家端機器人(未有變動>>>目前與LINE bot SDK範例相同)
   主要controller程式碼位置 : 
   
     lineFreshBot\store-bot\sample-spring-boot-kitchensink\src\main\java\com\example\bot\spring\KitchenSinkController.java
