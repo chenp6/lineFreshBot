@@ -12,7 +12,7 @@ let io = new Server(server); //透過pass已建好的server，初始化socket.io
 const chatRecord = new Map(); //userId: 'userId'=> msg:對話紀錄
 
 const store = new Map();
-// userId:'Ucac26808a6bcb9585be92a9173010fac'=>
+// userId:'店家userId'=>
 // {
 //  storeName:'LOVELAND 專情島',
 //  photoURI:'/static/img/LOVELAND.jpg', 
